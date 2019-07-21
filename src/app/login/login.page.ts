@@ -4,6 +4,7 @@ import { auth } from 'firebase/app';
 
 import { AlertController } from '@ionic/angular'
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,23 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   username: string = "";
   password: string = "";
+  userFirstName: any;
+  userLastName: any;
 
   constructor(
     public afAuth: AngularFireAuth,
     public alert: AlertController, 
-    public router: Router
+    public router: Router,
+    public route: ActivatedRoute
     ) { }
 
   ngOnInit() {
+    //storing the sent data
+    this.route.queryParams.subscribe(params => {
+      console.log('Params: ', params);
+      this.userFirstName = params.firstname
+      this.userLastName = params.lastname
+    })
   }
 
   register(){
@@ -38,7 +48,7 @@ export class LoginPage implements OnInit {
       //kind of a hack 
       const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password)
       //show a success
-      this.showAlert("Loggin Successful", "Entering FitnessApplication")
+      this.showAlert("Loggin Successful", "Welcome " + this.userFirstName.toUpperCase + "!")
       this.router.navigate(['/tabs'])
     }catch(err){
         console.dir(err);
