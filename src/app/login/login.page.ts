@@ -5,6 +5,7 @@ import { auth } from 'firebase/app';
 import { AlertController } from '@ionic/angular'
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
     public afAuth: AngularFireAuth,
     public alert: AlertController, 
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public user: UserService
     ) { }
 
   ngOnInit() {
@@ -48,8 +50,17 @@ export class LoginPage implements OnInit {
       //kind of a hack 
       const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password)
       //show a success
-      this.showAlert("Loggin Successful", "Welcome " + this.userFirstName.toUpperCase + "!")
-      this.router.navigate(['/tabs'])
+   
+      if(res.user){
+        this.user.setUser({
+          username,
+          uid: res.user.uid
+        })
+        //the userFirstName is only given when the users has signed up aswell
+        this.showAlert("Loggin Successful", "Welcome " + this.userFirstName + "!")
+        this.router.navigate(['/tabs'])
+      }
+
     }catch(err){
         console.dir(err);
         this.showAlert("Error!", err.message)

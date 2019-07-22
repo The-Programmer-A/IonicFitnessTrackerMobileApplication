@@ -5,5 +5,20 @@
 </ion-header>
 
 <ion-content>
-  <h1>in the new record page </h1> 
+<!-- here im going to have the create new workout display page
+what data do i want stored in the firebase database?
+  exercise > weight, reps, sets
+  a user will have x exercises
+
+this page can also serve as a profile. showing any workout information from the day
+will have a floting button which allows the user to enter in new workout information. this will take them to a new page.-->
+
+  <ion-fab vertical="center" horizontal="center" slot="fixed">
+    <ion-fab-button color="danger", (click)="createNewWorkout()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
 </ion-content>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
+import { firestore } from 'firebase/app';
 
 @Component({
   selector: 'app-new-record',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewRecordPage implements OnInit {
 
-  constructor() { }
+userPosts: any
+
+  constructor(
+    public afstore: AngularFirestore,
+    public user: UserService
+  ) { 
+    const posts = afstore.doc(`users/${user.getUID}`) //this gets the information tied to a users UID from firebase
+    this.userPosts = posts.valueChanges() //gets us the data
+   }
 
   ngOnInit() {
+  }
+
+  enterToFirebase(){
+    this.afstore.doc(`users/${this.user.getUID}`).update({
+      posts: firestore.FieldValue.arrayUnion({
+        //all the items you want to store
+      })
+    })
   }
 
 }
