@@ -1,10 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>TABS</ion-title>
+    <ion-title>Fitness Tracker</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>GoodMorning!</h1>
-
-</ion-content>
+<ion-tabs #tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="calendar">
+        <ion-icon name="albums"></ion-icon>
+        <ion-label>Calendar History</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="new-record">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>New Workout</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
