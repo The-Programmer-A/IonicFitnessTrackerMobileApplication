@@ -29,27 +29,23 @@ export class RegisterPage implements OnInit {
     ) { }
 
   ngOnInit() {
-
-
   }
-
 
   signin(){
     this.router.navigate(['/login'])
   }
 
-
   async register(){
     const { username, password, cpass} = this
 
     //data i want to send with the router
-    let inputData: NavigationExtras = {
-      queryParams: {
-        firstname: this.firstname,
-        lastname: this.lastname
-      }
+    // let inputData: NavigationExtras = {
+    //   queryParams: {
+    //     firstname: this.firstname,
+    //     lastname: this.lastname
+    //   }
 
-    }
+    // }
 
     if(password != cpass){
       this.showAlert("Error!", "Passwords don't match")
@@ -69,7 +65,7 @@ export class RegisterPage implements OnInit {
       })
 
       this.showAlert("Account Created!", "Please sign in")
-      this.router.navigate(['/login'], inputData)
+      this.router.navigate(['/login'])
 
 
     }catch(err){

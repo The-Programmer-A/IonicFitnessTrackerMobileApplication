@@ -8,7 +8,7 @@ const routes: Routes = [
 		component: TabsPage, //spesifies which componenet of the tabs we want the path to point to 
 		children: [ //these are the components options
             { path: 'calendar', loadChildren: '../calendar/calendar.module#CalendarPageModule' },
-            { path: 'new-record', loadChildren: '../new-record/new-record.module#NewRecordPageModule' },
+            { path: 'new-record', loadChildren: '../new-record/new-record.module#NewRecordPageModule' }
 		]
 	}	
 ];

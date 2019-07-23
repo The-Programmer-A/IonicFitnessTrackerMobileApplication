@@ -23,6 +23,7 @@ export class UserService {
     }
 
     getUser(){
-        return this.user
+        let x = this.user.username
+        return x;
     }
 }

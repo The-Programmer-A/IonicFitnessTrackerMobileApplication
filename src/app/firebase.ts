@@ -1,4 +1,3 @@
-
 const config = {
     apiKey: "AIzaSyC_cxUIbZXElHP7EebP92bxbBVYZCAUwjE",
     authDomain: "fitnesstracker-a062b.firebaseapp.com",

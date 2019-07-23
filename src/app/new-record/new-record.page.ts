@@ -10,7 +10,7 @@ import { firestore } from 'firebase/app';
 })
 export class NewRecordPage implements OnInit {
 
-userPosts: any
+  userPosts: any
 
   constructor(
     public afstore: AngularFirestore,
@@ -29,6 +29,9 @@ userPosts: any
         //all the items you want to store
       })
     })
+  }
+  newWorkout(){
+    console.log("something is working")
   }
 
 }

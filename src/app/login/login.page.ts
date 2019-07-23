@@ -28,11 +28,11 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     //storing the sent data
-    this.route.queryParams.subscribe(params => {
-      console.log('Params: ', params);
-      this.userFirstName = params.firstname
-      this.userLastName = params.lastname
-    })
+    // this.route.queryParams.subscribe(params => {
+    //   console.log('Params: ', params);
+    //   this.userFirstName = params.firstname
+    //   this.userLastName = params.lastname
+    // })
   }
 
   register(){
@@ -48,16 +48,15 @@ export class LoginPage implements OnInit {
 
     try{
       //kind of a hack 
-      const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password)
+      const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password) //authorise the user through firebase
       //show a success
-   
-      if(res.user){
+      if(res.user){ //if the user exists in the database
         this.user.setUser({
           username,
           uid: res.user.uid
         })
         //the userFirstName is only given when the users has signed up aswell
-        this.showAlert("Loggin Successful", "Welcome " + this.userFirstName + "!")
+        this.showAlert("Loggin Successful", "Welcome " + username + "!")
         this.router.navigate(['/tabs'])
       }
 
