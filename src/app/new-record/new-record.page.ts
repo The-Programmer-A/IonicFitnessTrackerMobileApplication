@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { firestore } from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-record',
@@ -14,7 +15,8 @@ export class NewRecordPage implements OnInit {
 
   constructor(
     public afstore: AngularFirestore,
-    public user: UserService
+    public user: UserService,
+    public router: Router
   ) { 
     const posts = afstore.doc(`users/${user.getUID}`) //this gets the information tied to a users UID from firebase
     this.userPosts = posts.valueChanges() //gets us the data
@@ -30,8 +32,10 @@ export class NewRecordPage implements OnInit {
       })
     })
   }
+
   newWorkout(){
-    console.log("something is working")
+    //functionality that allows to create a new workout
+    this.router.navigate(['./select-muscle-group'])
   }
 
 }
