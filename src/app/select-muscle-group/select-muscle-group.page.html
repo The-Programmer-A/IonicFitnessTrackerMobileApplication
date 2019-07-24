@@ -1,11 +1,62 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>selectMuscleGroup</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Select Muscle Group</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
 
 <ion-content>
+    <ion-card (click)="backList()">
+        <ion-card-header>
+          <ion-card-subtitle>Back</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
 
-  <h1>Hey im in the selector page</h1>
+    <ion-card (click)="chestList()">
+        <ion-card-header>
+          <ion-card-subtitle>Chest</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
 
+    <ion-card (click)="shouldersList()">
+        <ion-card-header>
+          <ion-card-subtitle>Shoulders</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card (click)="tricepsList()">
+        <ion-card-header>
+          <ion-card-subtitle>Triceps</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card> 
+
+    <ion-card (click)="bicepsList()">
+        <ion-card-header>
+          <ion-card-subtitle>Biceps</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card (click)="coreList()">
+        <ion-card-header>
+          <ion-card-subtitle>Core</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
+
+    
+    <ion-card (click)="legsList()">
+        <ion-card-header>
+          <ion-card-subtitle>Legs</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
+
+    
+    <ion-card (click)="cardioList()">
+        <ion-card-header>
+          <ion-card-subtitle>Cardio</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
 </ion-content>

@@ -20,7 +20,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      backButtonIcon: 'arrow-dropleft' //not sure if this is working
+    }),
      AppRoutingModule,
      AngularFireModule.initializeApp(firebaseConfig),
      AngularFireAuthModule,
