@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tricepList</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Exercises</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-list>
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Rope Pull Downs</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>French Press</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Close Grip Beanch Press</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>V-Bar Pushdowns</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>EZ-Bar Skullcrushers</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

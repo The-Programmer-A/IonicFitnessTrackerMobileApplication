@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>BackList</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Exercises</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,28 +12,28 @@
   <!-- need to have a create custom excersie option -->
 
   <ion-list>
-    <ion-item>
+    <ion-item (click)="exerciseRecorder()">
       <ion-label>Barbell Rows</ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item (click)="exerciseRecorder()">
       <ion-label>Dumbell Rows</ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item (click)="exerciseRecorder()">
       <ion-label>Deadlifts</ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item (click)="exerciseRecorder()">
       <ion-label>Lat Pulldowns</ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item (click)="exerciseRecorder()">
       <ion-label>Lat Machine Rows</ion-label>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Core</ion-label>
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Pull Ups</ion-label>
     </ion-item>
   </ion-list>
 

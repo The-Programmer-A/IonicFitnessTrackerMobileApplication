@@ -30,7 +30,7 @@ export class SelectMuscleGroupPage implements OnInit {
 
   tricepsList(){
     console.log("triceps")
-    this.router.navigate(['/trcep-list'])
+    this.router.navigate(['/tricep-list'])
   }
 
   bicepsList(){

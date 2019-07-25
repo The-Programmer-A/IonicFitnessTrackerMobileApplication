@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Exercise Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<script>
+    function create() {
+
+    }
+</script>
+
+
+<ion-content>
+  <!-- this is the weights toggle bar -->
+  <ion-item>
+    <ion-icon name="remove-circle" (click)="decrementWight()"></ion-icon>
+    <ion-label class="alignme"> Weight: </ion-label>
+    <ion-input type="number" number-center [(ngModel)]="currentWeight"></ion-input>
+    <ion-icon name="add-circle" (click)="incrementWeight()"></ion-icon>
+  </ion-item>
+
+  <!-- this is the reps toggle bar -->
+  <ion-item>
+    <ion-icon name="remove-circle" (click)="decrementReps()"></ion-icon>
+    <ion-label class="alignme"> Reps: </ion-label>
+    <ion-input type="number" number-center [(ngModel)]="currentReps"></ion-input>
+    <ion-icon name="add-circle" (click)="incrementReps()"></ion-icon>
+  </ion-item>
+
+  <!-- A button to submit the weight and the reps -->
+
+  <section>
+    <ion-button color="success" (click)="submit()">Submit</ion-button>
+    <!-- keep a track of how many times this has been selected -->
+  </section>
+
+
+
+  <section>
+    <ion-button color="danger">Delete</ion-button>
+  </section>
+  <!-- A button to delete the or update the set that is created -->
+
+</ion-content>

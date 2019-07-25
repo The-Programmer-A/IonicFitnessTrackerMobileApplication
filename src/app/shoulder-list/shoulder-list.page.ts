@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-shoulder-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoulderListPage implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
+  }
+
+  exerciseRecorder(){
+    console.log("something is happneing")
+    this.router.navigate(['/exercise-recorder'])
   }
 
 }

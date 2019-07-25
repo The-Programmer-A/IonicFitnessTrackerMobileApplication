@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'bicep-list', loadChildren: './bicep-list/bicep-list.module#BicepListPageModule' },
   { path: 'core-list', loadChildren: './core-list/core-list.module#CoreListPageModule' },
   { path: 'legs-list', loadChildren: './legs-list/legs-list.module#LegsListPageModule' },
-  { path: 'cardio-list', loadChildren: './cardio-list/cardio-list.module#CardioListPageModule' },
+  { path: 'cardio-list', loadChildren: './cardio-list/cardio-list.module#CardioListPageModule' },  { path: 'exercise-recorder', loadChildren: './exercise-recorder/exercise-recorder.module#ExerciseRecorderPageModule' },
+
 
 ];
 

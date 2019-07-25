@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>coreList</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Exercises</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-list>
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label></ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Plank</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Crunches</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Sit Ups</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Hanging Leg Raises</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Lying Leg Raises</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>shoulderList</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Exercises</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-list>
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Arnold Press</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Over Head Press</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Side Lateral Raises</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Front Raises</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Cabel Face Pulls</ion-label>
+    </ion-item>
+
+    <ion-item (click)="exerciseRecorder()">
+      <ion-label>Dumbell Press</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
