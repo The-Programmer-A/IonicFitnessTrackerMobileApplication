@@ -8,18 +8,25 @@
 </ion-header>
 
 <script>
-    function create() {
-
-    }
+  function generateList(number = 5) {
+    return `
+    <ion-item>
+    <ion-icon name="remove-circle" (click)="decrementReps()"></ion-icon>
+    <ion-label class="alignme"> Reps: </ion-label>
+    <ion-input type="number" [(ngModel)]="currentReps"></ion-input>
+    <ion-icon name="add-circle" (click)="incrementReps()"></ion-icon>
+  </ion-item>
+      `;
+  }
 </script>
 
 
 <ion-content>
   <!-- this is the weights toggle bar -->
   <ion-item>
-    <ion-icon name="remove-circle" (click)="decrementWight()"></ion-icon>
+    <ion-icon name="remove-circle" (click)="decrementWeight()"></ion-icon>
     <ion-label class="alignme"> Weight: </ion-label>
-    <ion-input type="number" number-center [(ngModel)]="currentWeight"></ion-input>
+    <ion-input placeholder=0 type="number" [(ngModel)]="currentWeight"></ion-input>
     <ion-icon name="add-circle" (click)="incrementWeight()"></ion-icon>
   </ion-item>
 
@@ -27,21 +34,30 @@
   <ion-item>
     <ion-icon name="remove-circle" (click)="decrementReps()"></ion-icon>
     <ion-label class="alignme"> Reps: </ion-label>
-    <ion-input type="number" number-center [(ngModel)]="currentReps"></ion-input>
+    <ion-input placeholder=0 type="number" [(ngModel)]="currentReps"></ion-input>
     <ion-icon name="add-circle" (click)="incrementReps()"></ion-icon>
   </ion-item>
 
   <!-- A button to submit the weight and the reps -->
 
   <section>
-    <ion-button color="success" (click)="submit()">Submit</ion-button>
-    <!-- keep a track of how many times this has been selected -->
+    <!-- keep a count of how many times this was selected as this is a representation of how many sets their are -->
+    <ion-button color="success" (click)="submit()">Save</ion-button>
+
   </section>
 
+  <!-- ${generateList(15)} -->
 
+  <ion-card ion-card *ngFor="let x of newSet;" text-wrap (click)='selectCard(x)'>
+      <ion-card-header>
+        <!-- Set: {{x.id}} -->
+        <ion-card-subtitle>{{x.weight}} kg's </ion-card-subtitle>
+        <ion-card-subtitle>{{x.reps}} Reps </ion-card-subtitle>
+      </ion-card-header>
+  </ion-card>
 
   <section>
-    <ion-button color="danger">Delete</ion-button>
+    <ion-button color="danger" (click)='delete()'>Delete</ion-button>
   </section>
   <!-- A button to delete the or update the set that is created -->
 

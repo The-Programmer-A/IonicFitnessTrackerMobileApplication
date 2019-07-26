@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular'
+
 
 @Component({
   selector: 'app-exercise-recorder',
@@ -7,53 +9,105 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExerciseRecorderPage implements OnInit {
 
-  currentWeight = 0
-  currentReps = 0
-  xSets: number
+  currentWeight
+  currentReps
+  xSets = 0
+  deletingCard: any
+  newSet: Array<{ id: number, weight: number, reps: number }> = []
 
-  constructor() { }
+  constructor(public alert: AlertController) { }
 
   ngOnInit() {
   }
 
+
   private incrementWeight() {
-    if(this.currentWeight > 0){
+    if (typeof (this.currentWeight) === "undefined") {
+      this.currentWeight = 0;
       this.currentWeight += 2.5;
-    }else{
-      //show an alert that it things are below 0
+      console.log(this.currentWeight)
+      return
+    }
+
+    if (this.currentWeight >= 0) {
+      this.currentWeight += 2.5;
+      console.log(this.currentWeight)
+    } else {
+      this.showAlert("Opps", "Sorry, weights cannot be below 0")
     }
     console.log("increamenting")
   }
-  
+
   private decrementWeight() {
-    if(this.currentWeight > 0){
-      this.currentWeight += 2.5 ;
-    }else{
-      //show an alret that it cannot be below 0
+    if (this.currentWeight > 0) {
+      this.currentWeight -= 2.5;
+      console.log(this.currentWeight)
+    } else {
+      this.showAlert("Opps", "Sorry, weights cannot be below 0")
     }
     console.log("decrementing")
   }
 
-  private incrementReps(){
-    if(this.currentReps > 0){
+  private incrementReps() {
+    if (typeof (this.currentReps) === "undefined") {
+      this.currentReps = 0;
       this.currentReps++
-    }else{
-      //showAlert
+      console.log(this.currentReps)
+      return
+    }
+
+    if (this.currentReps > 0) {
+      this.currentReps++
+      console.log(this.currentReps)
+    } else {
+      this.showAlert("Opps", "Sorry, reps cannot be below 0")
     }
     console.log("incrementingReps")
   }
 
-  private decrementReps(){
-    if(this.currentReps >0){
+  private decrementReps() {
+    if (this.currentReps > 0) {
       this.currentReps--;
-    }else{
-      //aleart
+      console.log(this.currentReps)
+    } else {
+      this.showAlert("Opps", "Sorry, reps cannot be below 0")
     }
     console.log("decrementing")
   }
 
-  private submit(){
+  private submit() {
+    console.log("currentWeight: " + this.currentWeight)
+    console.log("CurrentReps: " + this.currentReps)
+    this.newSet.push({ id: this.xSets, weight: this.currentWeight, reps: this.currentReps })
     this.xSets++;
+  }
+
+  private selectCard(number) {
+    console.log(number)
+    this.deletingCard = number
+
+
+  }
+
+  private delete() {
+    if (typeof (this.deletingCard) != "undefined") {
+      for (let i = 0; i < this.newSet.length; i++) {
+        if (this.newSet[i] == this.deletingCard) {
+          this.newSet.splice(i, 1);
+        }
+      }
+    }
+  }
+
+
+  async showAlert(header: string, message: string) {
+    const alert = await this.alert.create({
+      header,
+      message,
+      buttons: ["OK"]
+    })
+
+    await alert.present()
   }
 
 
