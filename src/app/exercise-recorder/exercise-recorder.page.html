@@ -60,9 +60,9 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content>
-      <ion-list>
-        <ion-menu-toggle auto-hide="false" *ngFor="let p of pages;">
+     <ion-content> <!--class="active-item" -->
+      <ion-list >
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of pages;" text-wrap (click)='storeRecorded(p)' [class.active-item]="selectedPath === p.url">
           <ion-item [routerLink]="p.url" routerDirection="root">
             {{p.title}}
           </ion-item>
@@ -71,4 +71,5 @@
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="content" main></ion-router-outlet>
+  
 </ion-split-pane>

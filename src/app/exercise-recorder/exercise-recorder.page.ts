@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
+import { firestore } from 'firebase';
 
 
 @Component({
@@ -11,10 +14,10 @@ import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 })
 export class ExerciseRecorderPage implements OnInit {
 
-  data: any
-  currentWeight
-  currentReps
-  xSets = 0
+  currentExercise: any //store in DB
+  currentWeight //store in DB
+  currentReps //store in DB
+  xSets = 0 //store in DB
   deletingCard: any
   newSet: Array<{ id: number, weight: number, reps: number }> = []
 
@@ -34,23 +37,41 @@ export class ExerciseRecorderPage implements OnInit {
   constructor(
     public alert: AlertController,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public afstore: AngularFirestore, 
+    public user: UserService
   ) {
     this.route.queryParams.subscribe(params => {
       console.log('params: ', params);
       if (params && params.exercise) {
-        this.data = params.exercise
+        this.currentExercise = params.exercise
       }
     });
 
-    this.router.events.subscribe((event: RouterEvent) => {
-      this.selectedPath = event.url
-      console.log(this.selectedPath)
-    });
+    // this.router.events.subscribe((event: RouterEvent) => {
+    //   this.selectedPath = event.url
+    // });
   }
 
   ngOnInit() {
   }
+
+  // storeRecorded(number){
+  //   const exercise = this.currentExercise
+  //   const weight = this.currentWeight
+  //   const reps = this.currentReps
+  //   const sets = this.xSets
+
+  //   //maybe they need to be serilized in JSON?
+  //     this.afstore.doc(`users/${this.user.getUID()}`).update({
+  //     exerciseRecord: firestore.FieldValue.arrayUnion({
+  //       exercise, 
+  //       weight, 
+  //       reps, 
+  //       sets
+  //     })
+  //   });
+  // }
 
 
   private incrementWeight() {

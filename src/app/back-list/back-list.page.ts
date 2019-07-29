@@ -49,11 +49,7 @@ export class BackListPage implements OnInit {
   exerciseRecorder(number) {
 
     console.log(number)
-    // this.afstore.doc(`users/${this.user.getUID()}`).update({
-    //   exerciseRecord: firestore.FieldValue.arrayUnion({
-    //     exercise
-    //   })
-    // })
+
 
     this.loggingExercise = number.exerciseName;
 
