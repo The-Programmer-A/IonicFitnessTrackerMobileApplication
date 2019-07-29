@@ -12,10 +12,14 @@
   <!-- need to have a create custom excersie option -->
 
   <ion-list>
-    <ion-item *ngFor="let x of backTrainingList;">
+    <ion-item *ngFor="let x of backTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
       <ion-label> {{x.exerciseName}}</ion-label>
     </ion-item>
   </ion-list>
 
-
+  <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button color="danger" (click)="newExercise()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>

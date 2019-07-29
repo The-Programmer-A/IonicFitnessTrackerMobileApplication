@@ -18,7 +18,7 @@ export class RegisterPage implements OnInit {
   lastname: string=""
   password: string =""
   cpass: string =""
-
+ 
 
   constructor(
     public afAuth: AngularFireAuth, 

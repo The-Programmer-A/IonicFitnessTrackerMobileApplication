@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'
+import { ActivatedRoute, Router } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
  
 @Component({
@@ -9,15 +11,28 @@ import { AlertController } from '@ionic/angular'
 })
 export class ExerciseRecorderPage implements OnInit {
 
+  data: any 
   currentWeight
   currentReps
   xSets = 0
   deletingCard: any
   newSet: Array<{ id: number, weight: number, reps: number }> = []
 
-  constructor(public alert: AlertController) { }
+  constructor(
+    public alert: AlertController,
+    private route: ActivatedRoute, 
+    private router: Router 
+    ) { 
+      this.route.queryParams.subscribe(params => {
+        // console.log('params: ', params);
+        if(params && params.exercise){
+          this.data = params.exercise
+        }
+      })
+    }
 
   ngOnInit() {
+    
   }
 
 
@@ -92,6 +107,7 @@ export class ExerciseRecorderPage implements OnInit {
       for (let i = 0; i < this.newSet.length; i++) {
         if (this.newSet[i] == this.deletingCard) {
           this.newSet.splice(i, 1);
+          this.xSets--;
         }
       }
     }

@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
     //   this.userLastName = params.lastname
     // })
   }
-
+ 
   register(){
     //take you to the register page
     this.router.navigate(['/register'])
