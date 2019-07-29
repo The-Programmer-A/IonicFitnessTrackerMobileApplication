@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'
 
-
+ 
 @Component({
   selector: 'app-exercise-recorder',
   templateUrl: './exercise-recorder.page.html',
@@ -85,8 +85,6 @@ export class ExerciseRecorderPage implements OnInit {
   private selectCard(number) {
     console.log(number)
     this.deletingCard = number
-
-
   }
 
   private delete() {
