@@ -51,7 +51,7 @@ export class LoginPage implements OnInit {
       const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password) //authorise the user through firebase
       //show a success
       if(res.user){ //if the user exists in the database
-        this.user.setUser({
+        this.user.setUser({ //set the user
           username,
           uid: res.user.uid
         })
