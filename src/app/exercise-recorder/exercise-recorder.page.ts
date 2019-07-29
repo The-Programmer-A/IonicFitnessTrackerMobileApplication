@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'
-import { ActivatedRoute, Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
- 
+
 @Component({
   selector: 'app-exercise-recorder',
   templateUrl: './exercise-recorder.page.html',
@@ -11,28 +11,45 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class ExerciseRecorderPage implements OnInit {
 
-  data: any 
+  data: any
   currentWeight
   currentReps
   xSets = 0
   deletingCard: any
   newSet: Array<{ id: number, weight: number, reps: number }> = []
 
+  pages = [
+    {
+      title: 'Home',
+      url: '/tabs/new-record'
+    },
+    {
+      title: 'All Exercises',
+      url: '/select-muscle-group'
+    }
+  ];
+
+  selectedPath = ''
+
   constructor(
     public alert: AlertController,
-    private route: ActivatedRoute, 
-    private router: Router 
-    ) { 
-      this.route.queryParams.subscribe(params => {
-        // console.log('params: ', params);
-        if(params && params.exercise){
-          this.data = params.exercise
-        }
-      })
-    }
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.route.queryParams.subscribe(params => {
+      console.log('params: ', params);
+      if (params && params.exercise) {
+        this.data = params.exercise
+      }
+    });
+
+    this.router.events.subscribe((event: RouterEvent) => {
+      this.selectedPath = event.url
+      console.log(this.selectedPath)
+    });
+  }
 
   ngOnInit() {
-    
   }
 
 

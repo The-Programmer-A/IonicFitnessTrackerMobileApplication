@@ -3,7 +3,6 @@ import { Router, NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { firestore } from 'firebase';
-import { AlretController } from 'ionic/angular';
 import { AlertController } from '@ionic/angular';
 
 

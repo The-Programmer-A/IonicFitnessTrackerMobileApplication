@@ -10,7 +10,11 @@
     width: 200px;
   }
 
-section {
+.section {
     display: flex;
     justify-content: center;
   }
+
+.active-item {
+  border-left: 8px solid var(--ion-color-primary);
+}
