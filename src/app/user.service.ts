@@ -18,13 +18,10 @@ export class UserService {
     setUser(user: user){
         this.user = user;
         this.stringID = user.uid
-        console.log(this.stringID + "string")
-        console.log(this.user.uid + "user")
     }   
 
     get getUID():string{
-        console.log(this.stringID + "get")
-        return this.stringID
+        return this.stringID //could try change this to this.user.uid
     }
 
     getUser(){

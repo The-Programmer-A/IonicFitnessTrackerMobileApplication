@@ -62,9 +62,6 @@ export class ExerciseRecorderPage implements OnInit {
     const weight = this.currentWeight
     const reps = this.currentReps
     const sets = this.xSets
-
-    console.log(this.user.getUID + "this is the uid")
-    console.log(this.user.stringID + "public")
     
     //maybe they need to be serilized in JSON?
       this.afstore.doc(`users/${this.user.getUID}`).update({
