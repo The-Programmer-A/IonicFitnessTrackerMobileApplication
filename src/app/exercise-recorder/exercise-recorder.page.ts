@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { firestore } from 'firebase';
+import { MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -39,7 +39,8 @@ export class ExerciseRecorderPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public afstore: AngularFirestore, 
-    public user: UserService
+    public user: UserService,
+    private menu: MenuController
   ) {
     this.route.queryParams.subscribe(params => {
       console.log('params: ', params);
@@ -56,22 +57,25 @@ export class ExerciseRecorderPage implements OnInit {
   ngOnInit() {
   }
 
-  // storeRecorded(number){
-  //   const exercise = this.currentExercise
-  //   const weight = this.currentWeight
-  //   const reps = this.currentReps
-  //   const sets = this.xSets
+  storeRecorded(number){
+    const exercise = this.currentExercise
+    const weight = this.currentWeight
+    const reps = this.currentReps
+    const sets = this.xSets
 
-  //   //maybe they need to be serilized in JSON?
-  //     this.afstore.doc(`users/${this.user.getUID()}`).update({
-  //     exerciseRecord: firestore.FieldValue.arrayUnion({
-  //       exercise, 
-  //       weight, 
-  //       reps, 
-  //       sets
-  //     })
-  //   });
-  // }
+    console.log(this.user.getUID + "this is the uid")
+    console.log(this.user.stringID + "public")
+    
+    //maybe they need to be serilized in JSON?
+      this.afstore.doc(`users/${this.user.getUID}`).update({
+      exerciseRecord: firestore.FieldValue.arrayUnion({
+        exercise, 
+        weight, 
+        reps, 
+        sets
+      })
+    });
+  }
 
 
   private incrementWeight() {
@@ -141,6 +145,7 @@ export class ExerciseRecorderPage implements OnInit {
   }
 
   private delete() {
+    console.log("called");
     if (typeof (this.deletingCard) != "undefined") {
       for (let i = 0; i < this.newSet.length; i++) {
         if (this.newSet[i] == this.deletingCard) {
@@ -151,7 +156,6 @@ export class ExerciseRecorderPage implements OnInit {
     }
   }
 
-
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({
       header,
@@ -161,7 +165,6 @@ export class ExerciseRecorderPage implements OnInit {
 
     await alert.present()
   }
-
 
 
 }

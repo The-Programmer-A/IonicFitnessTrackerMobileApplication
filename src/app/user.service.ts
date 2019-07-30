@@ -9,6 +9,7 @@ interface user {
 @Injectable()
 export class UserService {
     private user: user
+    public   stringID: string
 
     constructor(){
 
@@ -16,10 +17,14 @@ export class UserService {
 
     setUser(user: user){
         this.user = user;
-    }
+        this.stringID = user.uid
+        console.log(this.stringID + "string")
+        console.log(this.user.uid + "user")
+    }   
 
-    getUID(){
-        return this.user.uid
+    get getUID():string{
+        console.log(this.stringID + "get")
+        return this.stringID
     }
 
     getUser(){

@@ -55,7 +55,7 @@ export class RegisterPage implements OnInit {
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username + "@gmail.com", password)
 
       this.afstore.doc(`users/${res.user.uid}`).set({ //storing the username into the database
-        username
+        username,
       })
   
       this.user.setUser({

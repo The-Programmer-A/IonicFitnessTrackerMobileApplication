@@ -1,10 +1,27 @@
+
+<ion-menu side="start" menuId="customMenu">
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of pages;" text-wrap (click)='storeRecorded(p)'
+      [class.active-item]="selectedPath === p.url">
+      <ion-item [routerLink]="p.url" routerDirection="root">
+        {{p.title}}
+      </ion-item>
+    </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+
 <ion-header>
   <ion-toolbar>
-    <!-- <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
-    </ion-buttons> -->
     <ion-buttons slot="start">
-      <ion-menu-button>
+      <ion-menu-button >
       </ion-menu-button>
     </ion-buttons>
 
@@ -52,24 +69,3 @@
 
 </ion-content>
 
-<ion-split-pane>
-  <ion-menu contentId="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title> Menu </ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-     <ion-content> <!--class="active-item" -->
-      <ion-list >
-        <ion-menu-toggle auto-hide="false" *ngFor="let p of pages;" text-wrap (click)='storeRecorded(p)' [class.active-item]="selectedPath === p.url">
-          <ion-item [routerLink]="p.url" routerDirection="root">
-            {{p.title}}
-          </ion-item>
-        </ion-menu-toggle>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-router-outlet id="content" main></ion-router-outlet>
-  
-</ion-split-pane>
