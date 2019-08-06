@@ -38,7 +38,7 @@ export class ExerciseRecorderPage implements OnInit {
     public alert: AlertController,
     private route: ActivatedRoute,
     private router: Router,
-    public afstore: AngularFirestore, 
+    public afstore: AngularFirestore,
     public user: UserService,
     private menu: MenuController
   ) {
@@ -49,26 +49,22 @@ export class ExerciseRecorderPage implements OnInit {
       }
     });
 
-    // this.router.events.subscribe((event: RouterEvent) => {
-    //   this.selectedPath = event.url
-    // });
+    this.router.events.subscribe((event: RouterEvent) => {
+      this.selectedPath = event.url
+    });
   }
 
   ngOnInit() {
   }
 
-  storeRecorded(number){
+  storeRecorded(number) {
     const exercise = this.currentExercise
-    const weight = this.currentWeight
-    const reps = this.currentReps
-    const sets = this.xSets
 
     const arrOfWorkout = this.newSet
-    
-    //maybe they need to be serilized in JSON?
-      this.afstore.doc(`users/${this.user.getUID}`).update({
+
+    this.afstore.doc(`users/${this.user.getUID}`).update({
       exerciseRecord: firestore.FieldValue.arrayUnion({
-        exercise, 
+        exercise,
         arrOfWorkout
       })
     });
