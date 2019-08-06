@@ -68,6 +68,7 @@ export class ExerciseRecorderPage implements OnInit {
     //maybe they need to be serilized in JSON?
       this.afstore.doc(`users/${this.user.getUID}`).update({
       exerciseRecord: firestore.FieldValue.arrayUnion({
+        exercise, 
         arrOfWorkout
       })
     });
