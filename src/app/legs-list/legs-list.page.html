@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar> 
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
     </ion-buttons>
@@ -9,29 +9,15 @@
 
 <ion-content>
   <ion-list>
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Squats</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Stiff Leg Deadlifts</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Front Squats</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Box Squats</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Hamstring Curls</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Leg Extensions</ion-label>
+    <ion-item *ngFor="let x of legsTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
+      <ion-label> {{x.exerciseName}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button color="danger" (click)="newExercise()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
 </ion-content>

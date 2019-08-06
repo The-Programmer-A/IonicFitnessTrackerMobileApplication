@@ -5,9 +5,6 @@ import { UserService } from '../user.service';
 import { firestore } from 'firebase';
 import { AlertController } from '@ionic/angular';
 
-
-
-
 @Component({
   selector: 'app-back-list',
   templateUrl: './back-list.page.html',
@@ -64,7 +61,7 @@ export class BackListPage implements OnInit {
 
   async newExercise() {
     const alert = await this.alretController.create({
-      header: 'Somethig!',
+      header: 'New Exercise!',
       inputs: [
         {
           name: "input",

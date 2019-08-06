@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header> 
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
@@ -10,26 +10,15 @@
 <ion-content>
 
   <ion-list>
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Dumbell Curls</ion-label>
+    <ion-item *ngFor="let x of bicepTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
+      <ion-label> {{x.exerciseName}}</ion-label>
     </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Barbell Curls</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Preacher Curls</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Hammer Curls</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>EZ-Bar Curls</ion-label>
-    </ion-item>
-
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button color="danger" (click)="newExercise()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
 </ion-content>

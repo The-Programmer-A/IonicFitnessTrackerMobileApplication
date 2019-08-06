@@ -14,10 +14,10 @@ import { MenuController } from '@ionic/angular';
 })
 export class ExerciseRecorderPage implements OnInit {
 
-  currentExercise: any //store in DB
-  currentWeight //store in DB
-  currentReps //store in DB
-  xSets = 0 //store in DB
+  currentExercise: any 
+  currentWeight 
+  currentReps 
+  xSets = 0 
   deletingCard: any
   newSet: Array<{ id: number, weight: number, reps: number }> = []
 

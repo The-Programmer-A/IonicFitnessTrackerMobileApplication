@@ -5,30 +5,20 @@
     </ion-buttons>
     <ion-title>All Exercises</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content>
 
   <ion-list>
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Rope Pull Downs</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>French Press</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Close Grip Beanch Press</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>V-Bar Pushdowns</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>EZ-Bar Skullcrushers</ion-label>
+    <ion-item *ngFor="let x of tricepTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
+      <ion-label> {{x.exerciseName}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button color="danger" (click)="newExercise()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
 </ion-content>

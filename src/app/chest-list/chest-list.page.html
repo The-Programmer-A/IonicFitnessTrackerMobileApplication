@@ -10,29 +10,15 @@
 <ion-content>
 
   <ion-list>
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Dumbell Flat Bench</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Barbell Flat Bench</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Dumbell Incline Bench</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Barbell Incline Bench</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Dumbell Flys</ion-label>
-    </ion-item>
-
-    <ion-item (click)="exerciseRecorder()">
-      <ion-label>Machine Flys</ion-label>
+    <ion-item *ngFor="let x of chestTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
+      <ion-label> {{x.exerciseName}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button color="danger" (click)="newExercise()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
 </ion-content>
