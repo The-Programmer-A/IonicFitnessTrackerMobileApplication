@@ -62,14 +62,13 @@ export class ExerciseRecorderPage implements OnInit {
     const weight = this.currentWeight
     const reps = this.currentReps
     const sets = this.xSets
+
+    const arrOfWorkout = this.newSet
     
     //maybe they need to be serilized in JSON?
       this.afstore.doc(`users/${this.user.getUID}`).update({
       exerciseRecord: firestore.FieldValue.arrayUnion({
-        exercise, 
-        weight, 
-        reps, 
-        sets
+        arrOfWorkout
       })
     });
   }
