@@ -13,7 +13,11 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./exercise-recorder.page.scss'],
 })
 export class ExerciseRecorderPage implements OnInit {
+<<<<<<< HEAD
   date = new Date()
+=======
+  currentDate = new Date()
+>>>>>>> 7a2ed6b1bd9bf5e20d1286f6620290f32a83264d
   currentExercise: any 
   currentWeight 
   currentReps 
@@ -59,13 +63,21 @@ export class ExerciseRecorderPage implements OnInit {
 
   storeRecorded(number) {
     const exercise = this.currentExercise
+<<<<<<< HEAD
     const workoutDate = this.date
+=======
+    const workoutDate = this.currentDate
+>>>>>>> 7a2ed6b1bd9bf5e20d1286f6620290f32a83264d
     const arrOfWorkout = this.newSet
 
     this.afstore.doc(`users/${this.user.getUID}`).update({
       exerciseRecord: firestore.FieldValue.arrayUnion({
         exercise,
+<<<<<<< HEAD
         workoutDate,
+=======
+        workoutDate, 
+>>>>>>> 7a2ed6b1bd9bf5e20d1286f6620290f32a83264d
         arrOfWorkout
       })
     });
