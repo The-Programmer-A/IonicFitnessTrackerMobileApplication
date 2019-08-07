@@ -10,15 +10,22 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let x of chestTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
-      <ion-label> {{x.exerciseName}}</ion-label>
-    </ion-item>
+    <ion-item-sliding *ngFor="let x of chestTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
+      <ion-item>
+        <ion-label> {{x.exerciseName}} </ion-label>
+      </ion-item>
+      <ion-item-options side="end" (ionSwipe)='delete(x)'>
+        <ion-item-options (click)='delete(x)' size="large" expandable>
+          <ion-icon size="large" color="danger" name="close-circle"></ion-icon>
+        </ion-item-options>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end">
-      <ion-fab-button color="danger" (click)="newExercise()">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+    <ion-fab-button color="danger" (click)="newExercise()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

@@ -13,6 +13,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './user.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+import {DatePipe} from '@angular/common';
+
 
 
 
@@ -27,13 +31,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
      AppRoutingModule,
      AngularFireModule.initializeApp(firebaseConfig),
      AngularFireAuthModule,
-     AngularFirestoreModule
+     AngularFirestoreModule,
+     AngularFireDatabaseModule
     ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UserService
+    UserService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

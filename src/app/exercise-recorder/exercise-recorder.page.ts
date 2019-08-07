@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { firestore } from 'firebase';
 import { MenuController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -13,11 +14,7 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./exercise-recorder.page.scss'],
 })
 export class ExerciseRecorderPage implements OnInit {
-<<<<<<< HEAD
-  date = new Date()
-=======
-  currentDate = new Date()
->>>>>>> 7a2ed6b1bd9bf5e20d1286f6620290f32a83264d
+  date = new Date();
   currentExercise: any 
   currentWeight 
   currentReps 
@@ -44,7 +41,8 @@ export class ExerciseRecorderPage implements OnInit {
     private router: Router,
     public afstore: AngularFirestore,
     public user: UserService,
-    private menu: MenuController
+    private menu: MenuController,
+    private datePipe: DatePipe
   ) {
     this.route.queryParams.subscribe(params => {
       console.log('params: ', params);
@@ -63,21 +61,13 @@ export class ExerciseRecorderPage implements OnInit {
 
   storeRecorded(number) {
     const exercise = this.currentExercise
-<<<<<<< HEAD
-    const workoutDate = this.date
-=======
-    const workoutDate = this.currentDate
->>>>>>> 7a2ed6b1bd9bf5e20d1286f6620290f32a83264d
+    const workoutDate = this.datePipe.transform(this.date, 'yyyy-MM-dd')
     const arrOfWorkout = this.newSet
 
     this.afstore.doc(`users/${this.user.getUID}`).update({
       exerciseRecord: firestore.FieldValue.arrayUnion({
         exercise,
-<<<<<<< HEAD
         workoutDate,
-=======
-        workoutDate, 
->>>>>>> 7a2ed6b1bd9bf5e20d1286f6620290f32a83264d
         arrOfWorkout
       })
     });

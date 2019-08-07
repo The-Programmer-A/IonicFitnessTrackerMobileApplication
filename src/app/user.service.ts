@@ -9,7 +9,7 @@ interface user {
 @Injectable()
 export class UserService {
     private user: user
-    public   stringID: string
+    public stringID: string
 
     constructor(){
 
