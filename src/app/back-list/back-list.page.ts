@@ -12,6 +12,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class BackListPage implements OnInit {
 
+
   selectedvalue: string = "";
   backTrainingList: Array<{ exerciseName: any }> = [];
   loggingExercise: string
@@ -86,7 +87,7 @@ export class BackListPage implements OnInit {
         }
       ]
     });
-
+ 
     await alert.present()
     let result = await alert.onDidDismiss();
     const newex = result.data.values.input;
@@ -102,7 +103,8 @@ export class BackListPage implements OnInit {
     }
   }
 
-  delete(number) { //number is the obj passed thorugh
+  delete(number) { //number is the obj passed thorugh 
+    console.log("something ")
     for (let i = 0; i < this.backTrainingList.length; i++) {
       if (typeof (number) != "undefined") {
         for (let i = 0; i < this.backTrainingList.length; i++) {
@@ -112,7 +114,12 @@ export class BackListPage implements OnInit {
         }
       }
     }
+
+    //this.backTrainingList.splice(number, 1)
   }
+
+
+
 
 
 
