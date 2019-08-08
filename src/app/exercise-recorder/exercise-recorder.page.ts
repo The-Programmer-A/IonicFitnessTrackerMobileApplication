@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'
-import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent, NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { firestore } from 'firebase';
@@ -168,6 +168,20 @@ export class ExerciseRecorderPage implements OnInit {
         }
       }
     }
+  }
+
+  sendInfo(){
+    console.log(this.selectedPath)
+
+    let dateChecker = this.date;
+    let inputData: NavigationExtras = {
+      queryParams: {
+        date: dateChecker
+      }
+    }
+
+    this.router.navigate([this.selectedPath], inputData);
+
   }
 
   async showAlert(header: string, message: string) {

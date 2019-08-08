@@ -50,7 +50,6 @@ export class BackListPage implements OnInit {
 
 
     this.loggingExercise = number.exerciseName;
-
     let inputData: NavigationExtras = {
       queryParams: {
         exercise: this.loggingExercise
@@ -95,7 +94,6 @@ export class BackListPage implements OnInit {
   }
 
 
-  //GOING TO NEED SOMETHING TO DELETE NEW EXERCISES.
   addNewExercise(string) {
     this.backTrainingList.push({ exerciseName: string });
     for (let i = 0; i < this.backTrainingList.length; i++) {
@@ -114,8 +112,6 @@ export class BackListPage implements OnInit {
         }
       }
     }
-
-    //this.backTrainingList.splice(number, 1)
   }
 
 

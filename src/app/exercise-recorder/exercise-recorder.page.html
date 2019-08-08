@@ -7,7 +7,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-menu-toggle auto-hide="false" *ngFor="let p of pages;" 
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of pages;" text-wrap (click)='sendInfo()'
       [class.active-item]="selectedPath === p.url">
       <ion-item [routerLink]="p.url" routerDirection="root">
         {{p.title}}
@@ -17,7 +17,7 @@
   </ion-content> 
 </ion-menu>
 <ion-router-outlet main></ion-router-outlet>
-
+<!--  -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">

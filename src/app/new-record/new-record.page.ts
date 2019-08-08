@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { firestore } from 'firebase/app';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,12 +15,21 @@ export class NewRecordPage implements OnInit {
   userPosts
   workout: any;
   eventList: any[]
+  workoutToday = false
 
   constructor(
     public afstore: AngularFirestore,
     public user: UserService,
     public router: Router,
+    private route: ActivatedRoute,
   ) {
+    this.route.queryParams.subscribe(params => {
+      console.log('params: ', params);
+       if (params && params.date) {
+        this.workoutToday = true
+       }
+    });
+
     const posts = this.afstore.doc(`users/${this.user.getUID}`) //this gets the information tied to a users UID from firebase
 
     console.log(this.user.getUID + "this is the UID") //this gets the uid

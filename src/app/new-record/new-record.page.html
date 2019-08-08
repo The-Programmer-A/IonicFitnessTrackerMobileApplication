@@ -13,15 +13,21 @@ what data do i want stored in the firebase database?
 this page can also serve as a profile. showing any workout information from the day
 will have a floting button which allows the user to enter in new workout information. this will take them to a new page.-->
 
-  <ion-card *ngFor="let x of ((userPosts | async)?.exerciseRecord)">
+  <ion-card *ngIf="!workoutToday; else displayWorkouts">
     <ion-card-header>
-      Set: {{x.iden}} 
-      <ion-card-subtitle> {{ x.exercise }}</ion-card-subtitle> 
-      <ion-card-subtitle> Weight: {{ x.w }}</ion-card-subtitle> 
+      No workouts today
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngFor="let x of ((userPosts | async)?.exerciseRecord)" #displayWorkouts>
+    <ion-card-header>
+      Set: {{x.iden}}
+      <ion-card-subtitle> {{ x.exercise }}</ion-card-subtitle>
+      <ion-card-subtitle> Weight: {{ x.w }}</ion-card-subtitle>
       <ion-card-subtitle> Reps: {{ x.r }} </ion-card-subtitle>
     </ion-card-header>
   </ion-card>
-  
+
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button color="danger" (click)="newWorkout()">
       <ion-icon name="add"></ion-icon>
