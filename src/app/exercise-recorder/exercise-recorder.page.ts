@@ -20,7 +20,12 @@ export class ExerciseRecorderPage implements OnInit {
   currentReps 
   xSets = 0 
   deletingCard: any
+
   newSet: Array<{ id: number, weight: number, reps: number }> = []
+
+  id: number
+  weight: number 
+  reps: number
 
   pages = [
     {
@@ -59,16 +64,21 @@ export class ExerciseRecorderPage implements OnInit {
   ngOnInit() {
   }
 
-  storeRecorded(number) {
+  storeRecorded() {
     const exercise = this.currentExercise
     const workoutDate = this.datePipe.transform(this.date, 'yyyy-MM-dd')
-    const arrOfWorkout = this.newSet
+
+    const iden= this.id
+    const w = this.weight
+    const r = this.reps
 
     this.afstore.doc(`users/${this.user.getUID}`).update({
       exerciseRecord: firestore.FieldValue.arrayUnion({
         exercise,
         workoutDate,
-        arrOfWorkout
+        iden, 
+        w,
+        r
       })
     });
   }
@@ -131,8 +141,16 @@ export class ExerciseRecorderPage implements OnInit {
   private submit() {
     console.log("currentWeight: " + this.currentWeight)
     console.log("CurrentReps: " + this.currentReps)
+
     this.newSet.push({ id: this.xSets, weight: this.currentWeight, reps: this.currentReps })
+
+    this.id = this.xSets
+    this.weight = this.currentWeight
+    this.reps = this.currentReps
+
     this.xSets++;
+
+    this.storeRecorded()
   }
 
   private selectCard(number) {
@@ -161,6 +179,5 @@ export class ExerciseRecorderPage implements OnInit {
 
     await alert.present()
   }
-
 
 }

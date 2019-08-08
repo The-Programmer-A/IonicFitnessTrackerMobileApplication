@@ -13,35 +13,22 @@ import { Router } from '@angular/router';
 export class NewRecordPage implements OnInit {
   //title = "working"
   userPosts
-  workout: Array<{}> = [];
+  workout: any;
+  eventList: any[]
 
   constructor(
     public afstore: AngularFirestore,
     public user: UserService,
-    public router: Router
+    public router: Router,
   ) {
     const posts = this.afstore.doc(`users/${this.user.getUID}`) //this gets the information tied to a users UID from firebase
 
     console.log(this.user.getUID + "this is the UID") //this gets the uid
     this.userPosts = posts.valueChanges()
-    // this.userPosts = posts.valueChanges().subscribe((value: any) => {
-    //     console.log(JSON.stringify(value))
-    
-    // })
-
   }
 
   ngOnInit() {
-
-    // // for (let i = 0; i < this.backTrainingList.length; i++) {
-    // //   var str = JSON.stringify(this.backTrainingList[i])
-    // //   console.log(this.backTrainingList[i])
-    // // }
-
-
-
-    // this.afstore.collection('FitnessTracker').snapshotChanges();
-
+  
   }
 
   enterToFirebase() {

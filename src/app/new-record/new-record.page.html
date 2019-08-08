@@ -14,23 +14,18 @@ this page can also serve as a profile. showing any workout information from the 
 will have a floting button which allows the user to enter in new workout information. this will take them to a new page.-->
 
   <ion-card *ngFor="let x of ((userPosts | async)?.exerciseRecord)">
-    <!-- ion-card *ngFor="let x of newSet;" text-wrap (click)='selectCard(x)' -->
     <ion-card-header>
-      <!-- Set: {{x.id}} -->
+      Set: {{x.iden}} 
       <ion-card-subtitle> {{ x.exercise }}</ion-card-subtitle> 
-      <ion-card-subtitle> {{ x.workoutDate }}  workoutDate</ion-card-subtitle> 
-      <ion-card-subtitle> Reps </ion-card-subtitle>
+      <ion-card-subtitle> Weight: {{ x.w }}</ion-card-subtitle> 
+      <ion-card-subtitle> Reps: {{ x.r }} </ion-card-subtitle>
     </ion-card-header>
   </ion-card>
-
-
+  
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button color="danger" (click)="newWorkout()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-
-
 
 </ion-content>
