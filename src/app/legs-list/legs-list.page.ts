@@ -15,10 +15,10 @@ export class LegsListPage implements OnInit {
 
 
   selectedvalue: string = "";
-  legsTrainingList: Array<{ exerciseName: any }> = [];
+  legsTrainingList: Array<{ exerciseName: any }> = []; //read from the HTML to display list items. Add to this list to display new/more items in the HTML
   loggingExercise: string
 
-  newSet: Array<{ id: number, weight: number, reps: number }> = []
+  //newSet: Array<{ id: number, weight: number, reps: number }> = []
 
 
   constructor(
@@ -31,6 +31,7 @@ export class LegsListPage implements OnInit {
 
 
   ngOnInit() {
+     //on entry add some basic list of exercises.
     this.legsTrainingList.push({ exerciseName: "Squats" });
     this.legsTrainingList.push({ exerciseName: "Stiff Leg Deadlifts" });
     this.legsTrainingList.push({ exerciseName: "Front Squats" });
@@ -38,16 +39,19 @@ export class LegsListPage implements OnInit {
     this.legsTrainingList.push({ exerciseName: "Hamstring Curls" });
     this.legsTrainingList.push({ exerciseName: "Leg Extensions" });
 
-
-    for (let i = 0; i < this.legsTrainingList.length; i++) {
-      var str = JSON.stringify(this.legsTrainingList[i])
-      console.log(this.legsTrainingList[i])
-    }
+    // Testing purpose
+    // for (let i = 0; i < this.legsTrainingList.length; i++) {
+    //   var str = JSON.stringify(this.legsTrainingList[i])
+    //   console.log(this.legsTrainingList[i])
+    // }
   }
 
+  /**
+   * This records which exercise the user selected and sends the exercise information and redirects to the exercise-recorder
+   * @param number the card that is associsated with a workout name. This is used for data entry purposes
+   */
   exerciseRecorder(number) {
-
-    console.log(number)
+    //console.log(number)
 
 
     this.loggingExercise = number.exerciseName;
@@ -61,6 +65,9 @@ export class LegsListPage implements OnInit {
     this.router.navigate(['/exercise-recorder'], inputData)
   }
 
+   /**
+ * Creates a pop up that the user displays information with regards to a new exercise. 
+ */
   async newExercise() {
     const alert = await this.alretController.create({
       header: 'New Exercise!',
@@ -96,7 +103,10 @@ export class LegsListPage implements OnInit {
   }
 
 
-  //GOING TO NEED SOMETHING TO DELETE NEW EXERCISES.
+    /**
+   * helper method that is used to add the user input into the array allowing it to be displayed in the HTML
+   * @param string the new exercise entered by the user.
+   */
   addNewExercise(string) {
     this.legsTrainingList.push({ exerciseName: string });
     for (let i = 0; i < this.legsTrainingList.length; i++) {
@@ -104,6 +114,11 @@ export class LegsListPage implements OnInit {
     }
   }
 
+  
+  /**
+  * Method used for the deletion of a selected card
+  * @param number the number associated to which card the user selected. This allows use to delete the user selected card
+  */
   delete(number) { //number is the obj passed thorugh
     for (let i = 0; i < this.legsTrainingList.length; i++) {
       if (typeof (number) != "undefined") {

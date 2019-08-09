@@ -31,20 +31,20 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * routing
+   */
   signin(){
     this.router.navigate(['/login'])
   }
 
+  /**
+   * this method handels registering user information in to the firebase authenticator. 
+   * any invalid inputs will be handeled by the alert pop up helper
+   */
   async register(){
     const { username, password, cpass} = this
 
-    //data i want to send with the router
-    // let inputData: NavigationExtras = {
-    //   queryParams: {
-    //     firstname: this.firstname,
-    //     lastname: this.lastname
-    //   }
-    // }
 
     if(password != cpass){
       this.showAlert("Error!", "Passwords don't match")
@@ -73,6 +73,11 @@ export class RegisterPage implements OnInit {
     }
   }
 
+  /**
+   * Alert box that lets the user know about any invalid inputs.
+   * @param header header message to display on the pop up
+   * @param message message to display on the pop up
+   */
   async showAlert(header: string, message: string){
     const alert = await this.alert.create({
       header, 

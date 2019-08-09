@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar> 
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button>
     </ion-buttons>
@@ -8,23 +8,28 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item-sliding *ngFor="let x of legsTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
-          <ion-item>
-            <ion-label> {{x.exerciseName}} </ion-label>
-          </ion-item>
-          <ion-item-options side="end" (ionSwipe)='delete(x)'>
-            <ion-item-options  (click)='delete(x)' size="large" expandable>
-              <ion-icon size="large" color="danger" name="close-circle"></ion-icon>
-            </ion-item-options>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
 
+  <!-- this block creates list items for each of the items that are in the 'legsTrainingList' array in the classes
+  type script document. -->
+  <ion-list>
+    <ion-item-sliding *ngFor="let x of legsTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
+      <ion-item>
+        <ion-label> {{x.exerciseName}} </ion-label>
+      </ion-item>
+      <ion-item-options side="end" (ionSwipe)='delete(x)'>
+        <ion-item-options (click)='delete(x)' size="large" expandable>
+          <ion-icon size="large" color="danger" name="close-circle"></ion-icon>
+        </ion-item-options>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- This block is the creation of the 'Add Custom Exercise' feature. The inputs are entered in into the
+   array in the type script of the class -->
   <ion-fab vertical="bottom" horizontal="end">
-      <ion-fab-button color="danger" (click)="newExercise()">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+    <ion-fab-button color="danger" (click)="newExercise()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

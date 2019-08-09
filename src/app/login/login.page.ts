@@ -27,12 +27,7 @@ export class LoginPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    //storing the sent data
-    // this.route.queryParams.subscribe(params => {
-    //   console.log('Params: ', params);
-    //   this.userFirstName = params.firstname
-    //   this.userLastName = params.lastname
-    // })
+
   }
  
   register(){
@@ -47,7 +42,7 @@ export class LoginPage implements OnInit {
     console.log("Password: " + this.password);
 
     try{
-      //kind of a hack 
+      //kind of hack that masks the username as a email so that it can be stores in the database
       const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password) //authorise the user through firebase
       //show a success
       if(res.user){ //if the user exists in the database
@@ -66,7 +61,11 @@ export class LoginPage implements OnInit {
     }
   }
 
-
+/**
+ * gives a pop up alert when the users have done some type of invalid input
+ * @param header header message of the pop up 
+ * @param message message of the pop up
+ */
   async showAlert(header: string, message: string){
     const alert = await this.alert.create({
       header, 

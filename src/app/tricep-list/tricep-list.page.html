@@ -9,6 +9,8 @@
 
 <ion-content>
 
+  <!-- this block creates list items for each of the items that are in the 'tricepTrainingList' array in the classes
+  type script document. -->
   <ion-list>
     <ion-item-sliding *ngFor="let x of tricepTrainingList;" text-wrap (click)='exerciseRecorder(x)'>
       <ion-item>
@@ -22,6 +24,8 @@
     </ion-item-sliding>
   </ion-list>
 
+  <!-- This block is the creation of the 'Add Custom Exercise' feature. The inputs are entered in into the
+   array in the type script of the class -->
   <ion-fab vertical="bottom" horizontal="end">
     <ion-fab-button color="danger" (click)="newExercise()">
       <ion-icon name="add"></ion-icon>

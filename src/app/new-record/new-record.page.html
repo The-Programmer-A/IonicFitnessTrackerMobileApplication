@@ -5,20 +5,13 @@
 </ion-header>
 
 <ion-content>
-  <!-- here im going to have the create new workout display page
-what data do i want stored in the firebase database?
-  exercise > weight, reps, sets
-  a user will have x exercises
-
-this page can also serve as a profile. showing any workout information from the day
-will have a floting button which allows the user to enter in new workout information. this will take them to a new page.-->
-
+  <!-- if the user has no workouts today then show then a card displaying no information -->
   <ion-card *ngIf="!workoutToday; else displayWorkouts">
     <ion-card-header>
       No workouts today
     </ion-card-header>
   </ion-card>
-
+<!-- else the user has been working out today, therefore give an overview of everything the user has done today -->
   <ion-card *ngFor="let x of ((userPosts | async)?.exerciseRecord)" #displayWorkouts>
     <ion-card-header>
       Set: {{x.iden}}
@@ -27,7 +20,7 @@ will have a floting button which allows the user to enter in new workout informa
       <ion-card-subtitle> Reps: {{ x.r }} </ion-card-subtitle>
     </ion-card-header>
   </ion-card>
-
+<!-- button that allows the user to enter in new workout details -->
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button color="danger" (click)="newWorkout()">
       <ion-icon name="add"></ion-icon>

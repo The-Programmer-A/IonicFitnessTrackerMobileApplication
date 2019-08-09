@@ -5,7 +5,7 @@ import { UserService } from '../user.service';
 import { firestore } from 'firebase';
 import { AlertController } from '@ionic/angular';
 
- 
+
 @Component({
   selector: 'app-cardio-list',
   templateUrl: './cardio-list.page.html',
@@ -14,10 +14,10 @@ import { AlertController } from '@ionic/angular';
 export class CardioListPage implements OnInit {
 
   selectedvalue: string = "";
-  cardioTrainingList: Array<{ exerciseName: any }> = [];
+  cardioTrainingList: Array<{ exerciseName: any }> = []; //read from the HTML to display list items. Add to this list to display new/more items in the HTML
   loggingExercise: string
 
-  newSet: Array<{ id: number, weight: number, reps: number }> = []
+  //newSet: Array<{ id: number, weight: number, reps: number }> = [] don't think that this is needed
 
 
   constructor(
@@ -30,6 +30,7 @@ export class CardioListPage implements OnInit {
 
 
   ngOnInit() {
+    //on entry add some basic list of exercises.
     this.cardioTrainingList.push({ exerciseName: "Tredmill" });
     this.cardioTrainingList.push({ exerciseName: "Cross Trainer" });
     this.cardioTrainingList.push({ exerciseName: "Stair Machine" });
@@ -37,16 +38,19 @@ export class CardioListPage implements OnInit {
     this.cardioTrainingList.push({ exerciseName: "Rowing Machine" });
     this.cardioTrainingList.push({ exerciseName: "Boxing" });
 
-
-    for (let i = 0; i < this.cardioTrainingList.length; i++) {
-      var str = JSON.stringify(this.cardioTrainingList[i])
-      console.log(this.cardioTrainingList[i])
-    }
+    // Testing purposes
+    // for (let i = 0; i < this.cardioTrainingList.length; i++) {
+    //   var str = JSON.stringify(this.cardioTrainingList[i])
+    //   console.log(this.cardioTrainingList[i])
+    // }
   }
 
+  /**
+   * This records which exercise the user selected and sends the exercise information and redirects to the exercise-recorder
+   * @param number the card that is associsated with a workout name. This is used for data entry purposes
+   */
   exerciseRecorder(number) {
-
-    console.log(number)
+    //console.log(number)
 
 
     this.loggingExercise = number.exerciseName;
@@ -60,6 +64,10 @@ export class CardioListPage implements OnInit {
     this.router.navigate(['/exercise-recorder'], inputData)
   }
 
+
+  /**
+ * Creates a pop up that the user displays information with regards to a new exercise. 
+ */
   async newExercise() {
     const alert = await this.alretController.create({
       header: 'New Exercise!',
@@ -95,7 +103,10 @@ export class CardioListPage implements OnInit {
   }
 
 
-  //GOING TO NEED SOMETHING TO DELETE NEW EXERCISES.
+  /**
+   * helper method that is used to add the user input into the array allowing it to be displayed in the HTML
+   * @param string the new exercise entered by the user.
+   */
   addNewExercise(string) {
     this.cardioTrainingList.push({ exerciseName: string });
     for (let i = 0; i < this.cardioTrainingList.length; i++) {
@@ -103,6 +114,11 @@ export class CardioListPage implements OnInit {
     }
   }
 
+
+  /**
+  * Method used for the deletion of a selected card
+  * @param number the number associated to which card the user selected. This allows use to delete the user selected card
+  */
   delete(number) { //number is the obj passed thorugh
     for (let i = 0; i < this.cardioTrainingList.length; i++) {
       if (typeof (number) != "undefined") {

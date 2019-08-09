@@ -1,4 +1,4 @@
-
+<!-- This is the creation of the menu slide bar that obtains and displays information from the type script. -->
 <ion-menu side="start" menuId="customMenu">
   <ion-header>
     <ion-toolbar color="danger">
@@ -17,14 +17,13 @@
   </ion-content> 
 </ion-menu>
 <ion-router-outlet main></ion-router-outlet>
-<!--  -->
+<!-- this is the header that is usually seen when the menu is not slide/opened -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button >
       </ion-menu-button>
     </ion-buttons>
-
     <ion-title>Exercise Tracker</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -47,13 +46,12 @@
   </ion-item>
 
   <!-- A button to submit the weight and the reps -->
-
   <section>
     <!-- keep a count of how many times this was selected as this is a representation of how many sets their are -->
     <ion-button size="default" expand="full" color="success" (click)="submit()">Save</ion-button>
-
   </section>
 
+  <!-- display of the submitted exercises -->
   <ion-card ion-card *ngFor="let x of newSet;" text-wrap (click)='selectCard(x)'>
     <ion-card-header>
       <!-- Set: {{x.id}} -->
@@ -62,10 +60,10 @@
     </ion-card-header>
   </ion-card>
 
+  <!-- delete button implementation -->
   <section>
     <ion-button size="default" expand="full" color="danger" (click)='delete()'>Delete</ion-button>
   </section>
-  <!-- A button to delete the or update the set that is created -->
 
 </ion-content>
 

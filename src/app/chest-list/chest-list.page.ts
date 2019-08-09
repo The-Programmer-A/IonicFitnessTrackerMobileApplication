@@ -14,10 +14,10 @@ import { AlertController } from '@ionic/angular';
 export class ChestListPage implements OnInit {
 
   selectedvalue: string = "";
-  chestTrainingList: Array<{ exerciseName: any }> = [];
+  chestTrainingList: Array<{ exerciseName: any }> = []; //read from the HTML to display list items. Add to this list to display new/more items in the HTML
   loggingExercise: string
 
-  newSet: Array<{ id: number, weight: number, reps: number }> = []
+  //newSet: Array<{ id: number, weight: number, reps: number }> = [] don't think that i need this
 
   constructor(
     public router: Router,
@@ -29,6 +29,7 @@ export class ChestListPage implements OnInit {
 
 
   ngOnInit() {
+    //on entry add some basic list of exercises.
     this.chestTrainingList.push({ exerciseName: "Dumbell Flat Bench" });
     this.chestTrainingList.push({ exerciseName: "Barbell Flat Bench" });
     this.chestTrainingList.push({ exerciseName: "Dumbell Incline Bench" });
@@ -36,19 +37,20 @@ export class ChestListPage implements OnInit {
     this.chestTrainingList.push({ exerciseName: "Dumbell Flys" });
     this.chestTrainingList.push({ exerciseName: "Machine Flys" });
 
-
-    for (let i = 0; i < this.chestTrainingList.length; i++) {
-      var str = JSON.stringify(this.chestTrainingList[i])
-      console.log(this.chestTrainingList[i])
-    }
+    // Testing purpose
+    // for (let i = 0; i < this.chestTrainingList.length; i++) {
+    //   var str = JSON.stringify(this.chestTrainingList[i])
+    //   console.log(this.chestTrainingList[i])
+    // }
   }
 
 
-
+  /**
+     * This records which exercise the user selected and sends the exercise information and redirects to the exercise-recorder
+     * @param number the card that is associsated with a workout name. This is used for data entry purposes
+     */
   exerciseRecorder(number) {
-
-    console.log(number)
-
+    //console.log(number)
 
     this.loggingExercise = number.exerciseName;
 
@@ -61,6 +63,10 @@ export class ChestListPage implements OnInit {
     this.router.navigate(['/exercise-recorder'], inputData)
   }
 
+
+  /**
+ * Creates a pop up that the user displays information with regards to a new exercise. 
+ */
   async newExercise() {
     const alert = await this.alretController.create({
       header: 'New Exercise!',
@@ -95,6 +101,11 @@ export class ChestListPage implements OnInit {
     this.addNewExercise(newex);
   }
 
+
+  /**
+ * helper method that is used to add the user input into the array allowing it to be displayed in the HTML
+ * @param string the new exercise entered by the user.
+ */
   addNewExercise(string) {
     this.chestTrainingList.push({ exerciseName: string });
     for (let i = 0; i < this.chestTrainingList.length; i++) {
@@ -102,6 +113,11 @@ export class ChestListPage implements OnInit {
     }
   }
 
+
+  /**
+  * Method used for the deletion of a selected card
+  * @param number the number associated to which card the user selected. This allows use to delete the user selected card
+  */
   delete(number) { //number is the obj passed thorugh
     for (let i = 0; i < this.chestTrainingList.length; i++) {
       if (typeof (number) != "undefined") {
@@ -113,5 +129,5 @@ export class ChestListPage implements OnInit {
       }
     }
   }
- 
+
 }

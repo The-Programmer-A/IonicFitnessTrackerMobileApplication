@@ -1,16 +1,14 @@
-
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{viewTitle}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="today()">Today</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-    <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>{{viewTitle}}</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="today()">Today</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-
-
+  <!-- this displays a card that allows you to input new event details. Handels the "Add Workout Plan" aspect of the application-->
   <ion-card>
     <ion-card-header tappable (click)="collapseCard = !collapseCard">
       <ion-card-title> Add Workout Plan </ion-card-title>
@@ -37,23 +35,29 @@
         <ion-label>Set Reminder?</ion-label>
         <ion-checkbox [(ngModel)]="event.reminder"></ion-checkbox>
       </ion-item>
-      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''"> Add Workout</ion-button>
+      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''"> Add Workout
+      </ion-button>
     </ion-card-content>
   </ion-card>
 
+<!-- this allows for a naviagtion pannel that has 3 buttons allowing you to switch between calendar modes of Month, Week, Day -->
   <ion-row>
     <!-- changing the display of the calendar mode -->
     <ion-col size="4">
-      <ion-button expand="block" [color]="calendar.mode == 'month' ? 'primary' : 'dark'" (click)="changeMode('month')">Month</ion-button>
+      <ion-button expand="block" [color]="calendar.mode == 'month' ? 'primary' : 'dark'" (click)="changeMode('month')">
+        Month</ion-button>
     </ion-col>
     <ion-col size="4">
-        <ion-button expand="block" [color]="calendar.mode == 'week' ? 'primary' : 'dark'" (click)="changeMode('week')">Week</ion-button>
-      </ion-col>
-      <ion-col size="4">
-          <ion-button expand="block" [color]="calendar.mode == 'day' ? 'primary' : 'dark'" (click)="changeMode('day')">Day</ion-button>
-        </ion-col>
+      <ion-button expand="block" [color]="calendar.mode == 'week' ? 'primary' : 'dark'" (click)="changeMode('week')">
+        Week</ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button expand="block" [color]="calendar.mode == 'day' ? 'primary' : 'dark'" (click)="changeMode('day')">Day
+      </ion-button>
+    </ion-col>
   </ion-row>
 
+  <!-- This is the importing of the calendar from the installed calendar API -->
   <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
     (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
     (onTimeSelected)="onTimeSelected($event)" startHour="7" endHour="20" step="30" startingDayWeek="1">

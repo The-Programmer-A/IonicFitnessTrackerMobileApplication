@@ -23,6 +23,7 @@ export class NewRecordPage implements OnInit {
     public router: Router,
     private route: ActivatedRoute,
   ) {
+    //gaining infomration from an incoming source
     this.route.queryParams.subscribe(params => {
       console.log('params: ', params);
        if (params && params.date) {
@@ -33,28 +34,17 @@ export class NewRecordPage implements OnInit {
     const posts = this.afstore.doc(`users/${this.user.getUID}`) //this gets the information tied to a users UID from firebase
 
     console.log(this.user.getUID + "this is the UID") //this gets the uid
-    this.userPosts = posts.valueChanges()
+    this.userPosts = posts.valueChanges() //this turns the information gained from the database into an observable. The handling of this data is processed using a ansync pipe in HTML
   }
 
   ngOnInit() {
   
   }
 
-  enterToFirebase() {
-    this.afstore.doc(`users/${this.user.getUID}`).update({
-      posts: firestore.FieldValue.arrayUnion({
-        //all the items you want to store
-      })
-    })
-  }
-
+  /**routung */
   newWorkout() {
     //functionality that allows to create a new workout
     this.router.navigate(['./select-muscle-group'])
-  }
-
-  checkDate() {
-    console.log("sodifhsaodf")
   }
 
 }
