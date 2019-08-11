@@ -38,7 +38,7 @@ export class NewRecordPage implements OnInit {
   }
 
   ngOnInit() {
-  
+    this.workoutToday = false;
   }
 
   /**routung */
