@@ -42,15 +42,15 @@ export class LoginPage implements OnInit {
     console.log("Password: " + this.password);
 
     try{
-      //kind of hack that masks the username as a email so that it can be stores in the database
-      const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password) //authorise the user through firebase
-      //show a success
+      //uses firebase authenticator to try and sign in with a given username and password (authorize the user through firebase)
+      const res = await this.afAuth.auth.signInWithEmailAndPassword(username + "@gmail.com", password) 
+  
       if(res.user){ //if the user exists in the database
-        this.user.setUser({ //set the user
+        this.user.setUser({ //set the user for local use
           username,
           uid: res.user.uid
         })
-        //the userFirstName is only given when the users has signed up aswell
+
         this.showAlert("Loggin Successful", "Welcome " + username + "!")
         this.router.navigate(['/tabs'])
       }

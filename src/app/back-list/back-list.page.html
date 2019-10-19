@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-dropleft-circle"></ion-back-button> <!-- Back button implementation -->
+    <ion-buttons slot="end">
+      <ion-back-button text="Register" icon="log-in"></ion-back-button> <!-- Back button implementation -->
     </ion-buttons>
     <ion-title>All Exercises</ion-title>
   </ion-toolbar>
@@ -22,6 +22,10 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <section>
+    <ion-button size="default" expand="full" color="danger" (click)='delete()'>Delete</ion-button>
+  </section>
 
   <!-- This block is the creation of the 'Add Custom Exercise' feature. The inputs are entered in into the
    array in the type script of the class -->

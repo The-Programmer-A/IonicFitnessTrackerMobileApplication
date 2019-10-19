@@ -32,9 +32,9 @@ export class NewRecordPage implements OnInit {
     });
 
     const posts = this.afstore.doc(`users/${this.user.getUID}`) //this gets the information tied to a users UID from firebase
-
     console.log(this.user.getUID + "this is the UID") //this gets the uid
-    this.userPosts = posts.valueChanges() //this turns the information gained from the database into an observable. The handling of this data is processed using a ansync pipe in HTML
+    // Turns the information gained from the database into an observable. The handling of this data is processed using a async pipe in HTML
+    this.userPosts = posts.valueChanges() 
   }
 
   ngOnInit() {

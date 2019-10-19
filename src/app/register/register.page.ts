@@ -52,20 +52,19 @@ export class RegisterPage implements OnInit {
     }
 
     try{
+      //creating the user in the firebase authenticator
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username + "@gmail.com", password)
-
-      this.afstore.doc(`users/${res.user.uid}`).set({ //storing the username into the database
+      //storing the username into the database for a spesific user
+      this.afstore.doc(`users/${res.user.uid}`).set({ 
         username,
       })
-  
+      //create a local store of the user for future CRUD 
       this.user.setUser({
         username,
         uid: res.user.uid
       })
-
       this.showAlert("Account Created!", "Please sign in")
       this.router.navigate(['/login'])
-
 
     }catch(err){
       console.dir(err)

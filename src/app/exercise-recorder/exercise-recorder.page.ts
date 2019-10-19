@@ -72,7 +72,6 @@ export class ExerciseRecorderPage implements OnInit {
   storeRecorded() {
     const exercise = this.currentExercise
     const workoutDate = this.datePipe.transform(this.date, 'yyyy-MM-dd')
-
     const iden= this.id
     const w = this.weight
     const r = this.reps
